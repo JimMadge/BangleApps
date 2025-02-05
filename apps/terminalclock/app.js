@@ -125,7 +125,10 @@
     // let date = locale.date(now, 1).substr(0,6) + locale.date(now, 1).substr(-2);
     // let locale_date = ">" + dow + " " + date;
     // drawLine(locale_date, pos);
-    let date = now.toDateString();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;  // Months are 0-11
+    let day = now.getDate();
+    let date = ">" + year + "-" + month + "-" + day;
     drawLine(date, pos);
   };
 
