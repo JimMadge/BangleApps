@@ -44,8 +44,8 @@
           }else if(k == "L4") this[k] = "Motion";
           else if(k == "L5") this[k] = "Steps";
           else if(k == "L6") this[k] = ">";
-          else this[k] = "Empty"; 
-        } 
+          else this[k] = "Empty";
+        }
         else if (this[k]==="HR") this.showHRM = true;
         else if (this[k]==="Alt") this.showAltitude = true && process.env.HWVERSION == 2;
       });
@@ -96,7 +96,7 @@
   });
 
 
-  /* ---------------------------- 
+  /* ----------------------------
   Draw related of specific lines
   -------------------------------- */
 
@@ -121,10 +121,12 @@
   };
 
   let drawDate = function(now, pos){
-    let dow = locale.dow(now, 1);
-    let date = locale.date(now, 1).substr(0,6) + locale.date(now, 1).substr(-2);
-    let locale_date = ">" + dow + " " + date;
-    drawLine(locale_date, pos);
+    // let dow = locale.dow(now, 1);
+    // let date = locale.date(now, 1).substr(0,6) + locale.date(now, 1).substr(-2);
+    // let locale_date = ">" + dow + " " + date;
+    // drawLine(locale_date, pos);
+    let date = now.toDateString();
+    drawLine(date, pos);
   };
 
   let drawInput = function(pos){
@@ -142,7 +144,7 @@
       drawLine(">HR: " + parseInt(heartRate), pos);
     else
       drawLine(
-        ">HR: " + parseInt(Math.round(Bangle.getHealthStatus().bpm||Bangle.getHealthStatus("last").bpm)), 
+        ">HR: " + parseInt(Math.round(Bangle.getHealthStatus().bpm||Bangle.getHealthStatus("last").bpm)),
         pos);
   };
 
@@ -152,7 +154,7 @@
     else
       drawLine(">Alt: unknown", pos);
   };
-  
+
   let drawMotion = function(pos){
     let health = Bangle.getHealthStatus('last');
     let steps_formated = ">Motion: " + parseInt(health.movement);
@@ -211,7 +213,7 @@
       altitude = E.sum(median.slice(mid-4,mid+5)) / 9;
     }
     else
-      altitude = pressureInfo.altitude; 
+      altitude = pressureInfo.altitude;
   };
   Bangle.on('pressure', clock.onPressure);
 
