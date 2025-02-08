@@ -122,22 +122,17 @@
   };
 
   let drawDate = function(now, isoDate, pos) {
-    console.log(isoDate);
     let date;
-    console.log(date);
     if (clock.isoDate) {
-      console.log("it is true");
       let year = now.getFullYear();
       let month = now.getMonth() + 1;  // Months are 0-11
       let day = now.getDate();
       date = ">" + year + "-" + month + "-" + day;
     } else {
-      console.log("it is false");
       let dow = locale.dow(now, 1);
       date = locale.date(now, 1).substr(0,6) + locale.date(now, 1).substr(-2);
       date = ">" + dow + " " + date;
     }
-    console.log(date);
     drawLine(date, pos);
   };
 
